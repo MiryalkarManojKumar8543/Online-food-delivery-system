@@ -59,31 +59,53 @@ public class CartServiceImpl implements CartService{
         }
         CartItem cartItem = cartItemOptional.get();
         cartItem.setQuantity(quantity);
-        return cartItem;
+        // 5*100=500
+        cartItem.setTotalPrice(cartItem.getFood().getPrice()*quantity);
+        return cartItemRepository.save(cartItem);
     }
 
     @Override
     public Cart removeItemFromCart(Long cartItemId, String jwt) throws Exception {
-        return null;
+        User user = userService.findUserByJwtToken(jwt);
+        Cart cart = cartRepository.findByCustomerId(user.getId());
+        Optional<CartItem> cartItemOptional = cartItemRepository.findById(cartItemId);
+        if (cartItemOptional.isEmpty()){
+            throw new Exception("cart item not found");
+        }
+        CartItem item =cartItemOptional.get();
+        cart.getCartItems().remove(item);
+        return cartRepository.save(cart);
     }
 
     @Override
     public Long calculateCartTotals(Cart cart) throws Exception {
-        return 0L;
+        Long total = 0L;
+        for (CartItem cartItem : cart.getCartItems()){
+            total+=cartItem.getFood().getPrice()*cartItem.getQuantity();
+        }
+        return total;
     }
 
     @Override
     public Cart findCartById(Long id) throws Exception {
-        return null;
+        Optional<Cart> optionalCart = cartRepository.findById(id);
+        if(optionalCart.isEmpty()){
+            throw new Exception("Cart not found with id"+id);
+        }
+        return optionalCart.get();
     }
 
     @Override
-    public Cart findCartByUserId(Long userId) throws Exception {
-        return null;
+    public Cart findCartByUserId(String jwt) throws Exception {
+        User user = userService.findUserByJwtToken(jwt);
+        return cartRepository.findByCustomerId(user.getId());
     }
 
     @Override
-    public Cart clearCart(Long userId) throws Exception {
-        return null;
+    public Cart clearCart(String jwt) throws Exception {
+        User user = userService.findUserByJwtToken(jwt);
+        Cart cart = findCartByUserId(jwt);
+        cart.getCartItems().clear();
+        return cartRepository.save(cart);
     }
 }
