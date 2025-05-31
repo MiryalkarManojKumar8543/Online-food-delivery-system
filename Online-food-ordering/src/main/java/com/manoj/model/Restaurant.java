@@ -40,8 +40,8 @@ public class Restaurant {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "restaurant",orphanRemoval = true)
     private List<Order> orders = new ArrayList<>();
 
-    @ElementCollection
     @Column(length = 1000)
+    @ElementCollection
     private List<String> images;
 
     private LocalDateTime registrationDate;
