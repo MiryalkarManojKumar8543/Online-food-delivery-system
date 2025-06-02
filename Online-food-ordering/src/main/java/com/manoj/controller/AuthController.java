@@ -64,10 +64,12 @@ public class AuthController {
         cart.setCustomer(savedUser);
         cartRepository.save(cart);
 
-        Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(),user.getPassword());
+        UserDetails userDetails = customerUserDetailsService.loadUserByUsername(user.getEmail());
+        Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
+        
         String jwt = jwtProvider.generateToken(authentication);
+
 
         AuthResponse authResponse = new AuthResponse();
         authResponse.setJwt(jwt);
