@@ -1,4 +1,4 @@
-package com.manoj.service;
+package com.manoj.service.impl;
 
 import com.manoj.model.Cart;
 import com.manoj.model.CartItem;
@@ -7,13 +7,16 @@ import com.manoj.model.User;
 import com.manoj.repository.CartItemRepository;
 import com.manoj.repository.CartRepository;
 import com.manoj.request.AddCartItemRequest;
+import com.manoj.service.CartService;
+import com.manoj.service.FoodService;
+import com.manoj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class CartServiceImpl implements CartService{
+public class CartServiceImpl implements CartService {
 
     @Autowired
     private CartRepository cartRepository;

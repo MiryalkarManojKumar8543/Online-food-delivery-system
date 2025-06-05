@@ -1,10 +1,11 @@
-package com.manoj.service;
+package com.manoj.service.impl;
 
 import com.manoj.model.Category;
 import com.manoj.model.Food;
 import com.manoj.model.Restaurant;
 import com.manoj.repository.FoodRepository;
 import com.manoj.request.CreateFoodRequest;
+import com.manoj.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class FoodServiceImpl implements FoodService{
+public class FoodServiceImpl implements FoodService {
 
     @Autowired
     private FoodRepository foodRepository;

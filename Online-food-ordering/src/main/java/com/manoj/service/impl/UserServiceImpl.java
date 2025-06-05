@@ -1,13 +1,14 @@
-package com.manoj.service;
+package com.manoj.service.impl;
 
 import com.manoj.config.JwtProvider;
 import com.manoj.model.User;
 import com.manoj.repository.UserRepository;
+import com.manoj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;

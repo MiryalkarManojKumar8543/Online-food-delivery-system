@@ -1,4 +1,4 @@
-package com.manoj.service;
+package com.manoj.service.impl;
 
 import com.manoj.model.USER_ROLE;
 import com.manoj.model.User;

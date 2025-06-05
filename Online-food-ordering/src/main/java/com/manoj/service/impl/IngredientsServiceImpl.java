@@ -1,10 +1,12 @@
-package com.manoj.service;
+package com.manoj.service.impl;
 
 import com.manoj.model.IngredientCategory;
 import com.manoj.model.IngredientsItem;
 import com.manoj.model.Restaurant;
 import com.manoj.repository.IngredientCategoryRepository;
 import com.manoj.repository.IngredientItemRepository;
+import com.manoj.service.IngredientsService;
+import com.manoj.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class IngredientsServiceImpl implements IngredientsService{
+public class IngredientsServiceImpl implements IngredientsService {
 
     @Autowired
     private IngredientCategoryRepository ingredientCategoryRepository;

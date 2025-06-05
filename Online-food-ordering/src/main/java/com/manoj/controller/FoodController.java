@@ -1,9 +1,7 @@
 package com.manoj.controller;
 
 import com.manoj.model.Food;
-import com.manoj.model.Restaurant;
 import com.manoj.model.User;
-import com.manoj.request.CreateFoodRequest;
 import com.manoj.service.FoodService;
 import com.manoj.service.RestaurantService;
 import com.manoj.service.UserService;

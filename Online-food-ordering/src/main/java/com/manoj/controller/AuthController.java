@@ -8,7 +8,7 @@ import com.manoj.repository.CartRepository;
 import com.manoj.repository.UserRepository;
 import com.manoj.request.LoginRequest;
 import com.manoj.response.AuthResponse;
-import com.manoj.service.CustomerUserDetailsService;
+import com.manoj.service.impl.CustomerUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

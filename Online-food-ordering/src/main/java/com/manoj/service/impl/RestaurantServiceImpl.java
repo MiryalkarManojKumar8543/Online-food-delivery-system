@@ -1,4 +1,4 @@
-package com.manoj.service;
+package com.manoj.service.impl;
 
 import com.manoj.Dto.RestaurantDto;
 import com.manoj.model.Address;
@@ -8,16 +8,16 @@ import com.manoj.repository.AddressRepository;
 import com.manoj.repository.RestaurantRepository;
 import com.manoj.repository.UserRepository;
 import com.manoj.request.CreateRestaurantRequest;
+import com.manoj.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class RestaurantServiceImpl implements RestaurantService{
+public class RestaurantServiceImpl implements RestaurantService {
 
     @Autowired
     private RestaurantRepository restaurantRepository;
@@ -77,6 +77,7 @@ public class RestaurantServiceImpl implements RestaurantService{
 
     @Override
     public List<Restaurant> searchRestaurant(String keyword) {
+
         return restaurantRepository.findBySearchQuery(keyword);
     }
 
